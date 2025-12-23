@@ -7,7 +7,6 @@ an updated neovim port of the [one-hunter](https://github.com/Railly/one-hunter-
 <br/>
 
 <img width="1957" height="1251" alt="image" src="https://github.com/user-attachments/assets/58e135fc-57d4-4359-ae7c-dd5e9e703c7b" />
-
 <br/>
 <br/>
 
@@ -18,13 +17,13 @@ an updated neovim port of the [one-hunter](https://github.com/Railly/one-hunter-
 1. Using `Lazy`:
 
 ```lua
-{ 'my-user/onehunter.nvim' },
+{ 'SimonKrenn/onehunter.nvim' },
 ```
 
 2. Using `Packer`:
 
 ```lua
-use 'my-user/onehunter.nvim'
+use 'SimonKrenn/onehunter.nvim'
 ```
 
 ## Configuration
