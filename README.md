@@ -5,7 +5,7 @@
 <br/>
 <br/>
 
-![preview](./assets/sample-preview.png) 
+<img width="1957" height="1251" alt="image" src="https://github.com/user-attachments/assets/58e135fc-57d4-4359-ae7c-dd5e9e703c7b" />
 
 <br/>
 <br/>
@@ -17,21 +17,21 @@
 1. Using `Lazy`:
 
 ```lua
-{ 'my-user/my-theme.nvim' },
+{ 'my-user/onehunter.nvim' },
 ```
 
 2. Using `Packer`:
 
 ```lua
-use 'my-user/my-theme.nvim'
+use 'my-user/onehunter.nvim'
 ```
 
 ## Configuration
 
-To configure the plugin, you can call require('my-theme').setup({}), passing the table with the values in it. The following are the **defaults**:
+To configure the plugin, you can call require('one-hunter').setup({}), passing the table with the values in it. The following are the **defaults**:
 
 ```lua
-require('my-theme').setup({
+require('one-hunter').setup({
     -- NOTE: if your configuration sets vim.o.background in your configuration for Neovim,
     -- the following setting will do nothing, since it'll be overriden.
     theme = 'dark', -- String: 'dark' or 'light', determines the colorscheme used
@@ -59,7 +59,7 @@ To use the theme with [bufferline.nvim](https://github.com/akinsho/bufferline.nv
 
 ```lua
 require('bufferline').setup({
-    highlights = require('my-theme').bufferline.highlights,
+    highlights = require('one-hunter').bufferline.highlights,
 })
 ```
 
