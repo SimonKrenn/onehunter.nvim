@@ -1,6 +1,7 @@
 <div align="center">
 
-# My Theme
+# One Hunter Theme for neovim
+an updated neovim port of the [one-hunter](https://github.com/Railly/one-hunter-vscode) vscode theme
 
 <br/>
 <br/>
@@ -67,7 +68,9 @@ require('bufferline').setup({
 
 Contributions are welcome, please open an issue if you encounter any bug or if you find any improvements are needed for the code, also feel free to open a PR.
 
-Take a look at the [Development Guide](./DEVELOPMENT_GUIDE.md)
+## Acknowledgments
+
+This project started of, and still largely is, a port of  [one-hunter](https://github.com/Railly/one-hunter-vscode)
 
 ## License
 
