@@ -1,34 +1,68 @@
 local M = {}
 
-local function hex_to_rgb(hex)
-  local hex_type = '[abcdef0-9][abcdef0-9]'
-  local pat = '^#(' .. hex_type .. ')(' .. hex_type .. ')(' .. hex_type .. ')$'
+local function hex_to_rgba(hex)
   hex = string.lower(hex)
 
-  assert(
-    string.find(hex, pat) ~= nil,
-    'hex_to_rgb: invalid hex: ' .. tostring(hex)
-  )
+  local r, g, b, a = string.match(hex, '^#([a-f0-9][a-f0-9])([a-f0-9][a-f0-9])([a-f0-9][a-f0-9])([a-f0-9][a-f0-9])$')
+  if r then
+    return { tonumber(r, 16), tonumber(g, 16), tonumber(b, 16), tonumber(a, 16) / 255 }
+  end
 
-  local red, green, blue = string.match(hex, pat)
-  return { tonumber(red, 16), tonumber(green, 16), tonumber(blue, 16) }
+  r, g, b = string.match(hex, '^#([a-f0-9][a-f0-9])([a-f0-9][a-f0-9])([a-f0-9][a-f0-9])$')
+  if r then
+    return { tonumber(r, 16), tonumber(g, 16), tonumber(b, 16), 1 }
+  end
+
+  r, g, b, a = string.match(hex, '^#([a-f0-9])([a-f0-9])([a-f0-9])([a-f0-9])$')
+  if r then
+    r = r .. r
+    g = g .. g
+    b = b .. b
+    a = a .. a
+    return { tonumber(r, 16), tonumber(g, 16), tonumber(b, 16), tonumber(a, 16) / 255 }
+  end
+
+  r, g, b = string.match(hex, '^#([a-f0-9])([a-f0-9])([a-f0-9])$')
+  if r then
+    r = r .. r
+    g = g .. g
+    b = b .. b
+    return { tonumber(r, 16), tonumber(g, 16), tonumber(b, 16), 1 }
+  end
+
+  error('hex_to_rgba: invalid hex: ' .. tostring(hex))
 end
 
+local function hex_to_rgb(hex)
+  local c = hex_to_rgba(hex)
+  return { c[1], c[2], c[3] }
+end
+
+M.hex_to_rgba = hex_to_rgba
+
 function M.mix(fg, bg, alpha)
-  bg = hex_to_rgb(bg)
-  fg = hex_to_rgb(fg)
+  local f = hex_to_rgba(fg)
+  local b = hex_to_rgba(bg)
+
+  assert(f, 'mix: invalid fg: ' .. tostring(fg))
+  if not b then
+    b = { 0, 0, 0, 0 }
+  end
+
+  local af = alpha
+  if af == nil then
+    af = f[4] or 1
+  end
+  af = math.min(math.max(0, af), 1)
+
+  local ab = b[4] or 1
 
   local blendChannel = function(i)
-    local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+    local ret = af * f[i] + (1 - af) * ab * b[i]
     return math.floor(math.min(math.max(0, ret), 255) + 0.5)
   end
 
-  return string.format(
-    '#%02X%02X%02X',
-    blendChannel(1),
-    blendChannel(2),
-    blendChannel(3)
-  )
+  return string.format('#%02X%02X%02X', blendChannel(1), blendChannel(2), blendChannel(3))
 end
 
 function M.shade(color, value, base)
