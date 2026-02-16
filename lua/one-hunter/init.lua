@@ -8,6 +8,8 @@ local utils = require 'one-hunter.utils'
 local theme = {}
 
 local function set_terminal_colors()
+  local terminal_bg = config.transparent and colors.none or colors.editorBackground
+
   vim.g.terminal_color_0 = colors.editorBackground
   vim.g.terminal_color_1 = colors.syntaxError
   vim.g.terminal_color_2 = colors.successText
@@ -24,12 +26,15 @@ local function set_terminal_colors()
   vim.g.terminal_color_13 = colors.syntaxError
   vim.g.terminal_color_14 = colors.stringText
   vim.g.terminal_color_15 = colors.commentText
-  vim.g.terminal_color_background = colors.editorBackground
+  vim.g.terminal_color_background = terminal_bg
   vim.g.terminal_color_foreground = colors.mainText
 end
 
 local function set_groups()
-  local bg = config.transparent and 'NONE' or colors.editorBackground
+  local bg = config.transparent and colors.none or colors.bg
+  local bg_darker = config.transparent and colors.none or colors.bg_darker
+  local bg_light = config.transparent and colors.none or colors.bg_light
+  local bg_float = config.transparent and colors.none or colors.bg_float
   local diff_add = utils.shade(colors.successText, 0.5, colors.editorBackground)
   local diff_delete =
     utils.shade(colors.syntaxError, 0.5, colors.editorBackground)
@@ -39,9 +44,9 @@ local function set_groups()
     utils.shade(colors.warningEmphasis, 0.5, colors.editorBackground)
 
   local groups = {
-    Normal = { fg = colors.fg, bg = colors.bg },
-    NormalFloat = { fg = colors.fg, bg = colors.bg_float },
-    NormalNC = { fg = colors.fg, bg = colors.bg },
+    Normal = { fg = colors.fg, bg = bg },
+    NormalFloat = { fg = colors.fg, bg = bg_float },
+    NormalNC = { fg = colors.fg, bg = bg },
 
     -- Cursor
     Cursor = { fg = colors.bg, bg = colors.fg },
@@ -58,11 +63,11 @@ local function set_groups()
     -- Line numbers
     LineNr = { fg = colors.gray_dark },
     CursorLineNr = { fg = colors.fg },
-    SignColumn = { bg = colors.bg },
+    SignColumn = { bg = bg },
 
     -- Folds
     Folded = { fg = colors.gray_light, bg = colors.bg_visual },
-    FoldColumn = { fg = colors.gray_dark, bg = colors.bg },
+    FoldColumn = { fg = colors.gray_dark, bg = bg },
 
     -- Search
     CurSearch = { bg = utils.shade('#53A1FA', 0.2, colors.bg) },
@@ -74,13 +79,13 @@ local function set_groups()
     VisualNOS = { bg = utils.shade('#53A1FA', 0.4, colors.bg) },
 
     -- Statusline
-    StatusLine = { fg = colors.fg, bg = colors.bg_darker },
-    StatusLineNC = { fg = colors.gray_dark, bg = colors.bg_darker },
+    StatusLine = { fg = colors.fg, bg = bg_darker },
+    StatusLineNC = { fg = colors.gray_dark, bg = bg_darker },
 
     -- Tabline
     -- TabLine = { fg = colors.fg_dim, bg = '#3ADi434D44' },
-    TabLineFill = { bg = colors.bg_light },
-    TabLineSel = { fg = colors.fg, bg = colors.bg },
+    TabLineFill = { bg = bg_light },
+    TabLineSel = { fg = colors.fg, bg = bg },
 
     -- Winbar
     WinBar = { fg = colors.fg, bg = colors.none },

@@ -1,12 +1,10 @@
-local config = require 'one-hunter.config'
-
 local colors = {
   standardWhite = '#E0E0E0',
   standardBlack = '#34393E',
 }
 
 if vim.o.background == 'light' then
-  colors.editorBackground = config.transparent and 'none' or '#ffffff'
+  colors.editorBackground = '#ffffff'
   colors.sidebarBackground = '#dddddd'
   colors.popupBackground = '#ffffff'
   colors.floatingWindowBackground = '#ffffff'
@@ -39,6 +37,13 @@ if vim.o.background == 'light' then
   colors.syntaxOperator = '#a1a1a1'
   colors.foregroundEmphasis = '#000000'
   colors.terminalGray = '#333333'
+
+  colors.bg = '#ffffff'
+  colors.bg_dark = '#f0f0f0'
+  colors.bg_darker = '#e6e6e6'
+  colors.bg_light = '#fafafa'
+  colors.bg_visual = '#e0e0e0'
+  colors.bg_float = '#ffffff'
 else
   colors.editorBackground = '#191d21'
   colors.sidebarBackground = '#191d21'
@@ -106,8 +111,9 @@ else
   colors.red_dark = '#E34234'
   colors.green = '#A6E22E'
 
-  -- Special
-  colors.none = 'NONE'
 end
+
+-- Special
+colors.none = 'NONE'
 
 return colors
