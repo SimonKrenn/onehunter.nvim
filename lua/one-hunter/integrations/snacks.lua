@@ -45,19 +45,19 @@ function M.highlights()
     -- Selection and cursor
     SnacksPickerCursor = {
       fg = colors.fg,
-      bg = utils.shade('#F4457D', 0.2, colors.bg_float),
+      bg = utils.shade(colors.pink, 0.2, colors.bg_float),
       bold = true,
     },
     SnacksPickerCursorLine = {
-      bg = utils.shade('#F4457D', 0.2, colors.bg_float),
+      bg = utils.shade(colors.pink, 0.2, colors.bg_float),
     },
     SnacksPickerSelected = {
       fg = colors.pink,
-      bg = utils.shade('#F4457D', 0.2, colors.bg_float),
+      bg = utils.shade(colors.pink, 0.2, colors.bg_float),
     },
     SnacksPickerMulti = {
       fg = colors.blue,
-      bg = utils.shade('#53A1FA', 0.2, colors.bg_float),
+      bg = utils.shade(colors.blue, 0.2, colors.bg_float),
     },
 
     -- Matching text
@@ -87,7 +87,7 @@ function M.highlights()
     SnacksPickerMark = { fg = colors.pink, bold = true },
     SnacksPickerMarked = {
       fg = colors.pink,
-      bg = utils.shade('#F4457D', 0.2, colors.bg_float),
+      bg = utils.shade(colors.pink, 0.2, colors.bg_float),
     },
     SnacksPickerMarker = { fg = colors.pink, bold = true },
 

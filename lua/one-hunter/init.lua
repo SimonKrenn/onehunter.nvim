@@ -8,22 +8,22 @@ local utils = require 'one-hunter.utils'
 local theme = {}
 
 local function set_terminal_colors()
-  vim.g.terminal_color_0 = colors.editorBackground
-  vim.g.terminal_color_1 = colors.syntaxError
-  vim.g.terminal_color_2 = colors.successText
-  vim.g.terminal_color_3 = colors.warningEmphasis
-  vim.g.terminal_color_4 = colors.syntaxFunction
-  vim.g.terminal_color_5 = colors.syntaxKeyword
-  vim.g.terminal_color_6 = colors.linkText
-  vim.g.terminal_color_7 = colors.mainText
-  vim.g.terminal_color_8 = colors.inactiveText
-  vim.g.terminal_color_9 = colors.errorText
-  vim.g.terminal_color_10 = colors.stringText
-  vim.g.terminal_color_11 = colors.warningText
-  vim.g.terminal_color_12 = colors.syntaxOperator
-  vim.g.terminal_color_13 = colors.syntaxError
-  vim.g.terminal_color_14 = colors.stringText
-  vim.g.terminal_color_15 = colors.commentText
+  vim.g.terminal_color_0 = colors.terminalBlack
+  vim.g.terminal_color_1 = colors.terminalRed
+  vim.g.terminal_color_2 = colors.terminalGreen
+  vim.g.terminal_color_3 = colors.terminalYellow
+  vim.g.terminal_color_4 = colors.terminalBlue
+  vim.g.terminal_color_5 = colors.terminalMagenta
+  vim.g.terminal_color_6 = colors.terminalCyan
+  vim.g.terminal_color_7 = colors.terminalWhite
+  vim.g.terminal_color_8 = colors.terminalBrightBlack
+  vim.g.terminal_color_9 = colors.terminalBrightRed
+  vim.g.terminal_color_10 = colors.terminalBrightGreen
+  vim.g.terminal_color_11 = colors.terminalBrightYellow
+  vim.g.terminal_color_12 = colors.terminalBrightBlue
+  vim.g.terminal_color_13 = colors.terminalBrightMagenta
+  vim.g.terminal_color_14 = colors.terminalBrightCyan
+  vim.g.terminal_color_15 = colors.terminalBrightWhite
   vim.g.terminal_color_background = colors.editorBackground
   vim.g.terminal_color_foreground = colors.mainText
 end
@@ -51,8 +51,8 @@ local function set_groups()
     TermCursorNC = { fg = colors.bg, bg = colors.gray_dark },
 
     -- Lines
-    CursorLine = { bg = utils.shade('#191d21', 0.5, colors.bg) },
-    CursorColumn = { bg = utils.shade('#191d21', 0.5, colors.bg) },
+    CursorLine = { bg = utils.shade(colors.bg_dark, 0.5, colors.bg) },
+    CursorColumn = { bg = utils.shade(colors.bg_dark, 0.5, colors.bg) },
     ColorColumn = { bg = colors.bg_visual },
 
     -- Line numbers
@@ -65,13 +65,13 @@ local function set_groups()
     FoldColumn = { fg = colors.gray_dark, bg = colors.bg },
 
     -- Search
-    CurSearch = { bg = utils.shade('#53A1FA', 0.2, colors.bg) },
-    IncSearch = { bg = utils.shade('#53A1FA', 0.4, colors.bg) },
-    Search = { bg = utils.shade('#F4457D', 0.2, colors.bg) },
+    CurSearch = { bg = utils.shade(colors.blue, 0.2, colors.bg) },
+    IncSearch = { bg = utils.shade(colors.blue, 0.4, colors.bg) },
+    Search = { bg = utils.shade(colors.pink, 0.2, colors.bg) },
 
     -- Visual
-    Visual = { bg = utils.shade('#53A1FA', 0.4, colors.bg) },
-    VisualNOS = { bg = utils.shade('#53A1FA', 0.4, colors.bg) },
+    Visual = { bg = utils.shade(colors.blue, 0.4, colors.bg) },
+    VisualNOS = { bg = utils.shade(colors.blue, 0.4, colors.bg) },
 
     -- Statusline
     StatusLine = { fg = colors.fg, bg = colors.bg_darker },
@@ -118,7 +118,7 @@ local function set_groups()
 
     -- Match
     MatchParen = {
-      bg = utils.shade('#F4457D', 0.4, colors.bg),
+      bg = utils.shade(colors.pink, 0.4, colors.bg),
       fg = colors.blue,
     },
 
@@ -156,10 +156,10 @@ local function set_groups()
     Exception = { fg = colors.pink, bold = true },
 
     -- Operators
-    Operator = { fg = colors.fg },
+    Operator = { fg = colors.syntaxOperator },
 
     -- Delimiters
-    Delimiter = { fg = colors.fg },
+    Delimiter = { fg = colors.syntaxOperator },
 
     -- Identifiers
     Identifier = { fg = colors.fg },
